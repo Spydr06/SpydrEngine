@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Spydr">
+      <UniqueIdentifier>{776C1C0E-E380-44BF-AC02-E81E18D640F0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Spydr.h" />
+    <ClInclude Include="src\Spydr\Application.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Core.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\EntryPoint.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Log.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Spydr\Application.cpp">
+      <Filter>Spydr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Log.cpp">
+      <Filter>Spydr</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

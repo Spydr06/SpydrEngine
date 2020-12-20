@@ -1,3 +1,6 @@
 [submodule "SpydrEngine/vendor/spdlog"]
 	path = SpydrEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "D:\\Coding\\C++\\SpydrEngine\\Spydr\\vendor\\spdlog\\"]
+	path = D:\\Coding\\C++\\SpydrEngine\\Spydr\\vendor\\spdlog\\
+	url = https://github.com/gabime/spdlog.git
