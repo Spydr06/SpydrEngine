@@ -4,6 +4,9 @@
     <Filter Include="Spydr">
       <UniqueIdentifier>{776C1C0E-E380-44BF-AC02-E81E18D640F0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Spydr\Events">
+      <UniqueIdentifier>{a5e1a3d6-2b3e-456b-9970-df7cf099636e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Spydr.h" />
@@ -18,6 +21,18 @@
     </ClInclude>
     <ClInclude Include="src\Spydr\Log.h">
       <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Events\ApplicationEvent.h">
+      <Filter>Spydr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Events\Event.h">
+      <Filter>Spydr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Events\KeyEvent.h">
+      <Filter>Spydr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Events\MouseEvent.h">
+      <Filter>Spydr\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
