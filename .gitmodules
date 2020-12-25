@@ -1,3 +1,6 @@
 [submodule "D:\\Coding\\C++\\SpydrEngine\\Spydr\\vendor\\spdlog\\"]
 	path = D:\\Coding\\C++\\SpydrEngine\\Spydr\\vendor\\spdlog\\
 	url = https://github.com/gabime/spdlog.git
+[submodule "Spydr/vendor/glfw"]
+	path = Spydr/vendor/glfw
+	url = https://github.com/TheCherno/GLFW

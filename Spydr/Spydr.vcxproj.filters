@@ -35,6 +35,8 @@
       <Filter>Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h" />
+    <ClInclude Include="src\Spydr\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Spydr\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Spydr</Filter>
     </ClCompile>
     <ClCompile Include="src\sppch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

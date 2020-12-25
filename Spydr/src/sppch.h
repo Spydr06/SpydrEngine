@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Spydr/Log.h"
+
 #ifdef SP_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

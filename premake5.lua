@@ -11,6 +11,12 @@ workspace "SpydrEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Spydr/vendor/GLFW/include"
+
+include "Spydr/vendor/GLFW"
+
 project "Spydr"
 	location "Spydr"
 	kind "SharedLib"
@@ -26,7 +32,13 @@ project "Spydr"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	pchheader "sppch.h"

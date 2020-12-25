@@ -4,12 +4,14 @@
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Spydr
 {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -19,9 +21,10 @@ namespace Spydr
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1920, 1080);
-		SP_TRACE(e);
-
-		while (true);
+		while (m_Running) {
+			glClearColor(0, 0.3, 0.7, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 	}
 }
