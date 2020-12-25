@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Event.h"
-#include <sstream>
 
 namespace Spydr
 {
@@ -23,8 +22,7 @@ namespace Spydr
 	class SPYDR_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount)
-			: KeyEvent(keycode), m_RepeatCount(repeatCount)
+		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount)
 		{
 		}
 
@@ -45,8 +43,7 @@ namespace Spydr
 	class SPYDR_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode)
-			: KeyEvent(keycode)
+		KeyReleasedEvent(int keycode) : KeyEvent(keycode)
 		{
 		}
 

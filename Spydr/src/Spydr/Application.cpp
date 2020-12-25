@@ -1,4 +1,8 @@
+#include "sppch.h"
 #include "Application.h"
+
+#include "Spydr/Events/ApplicationEvent.h"
+#include "Spydr/Log.h"
 
 namespace Spydr
 {
@@ -15,6 +19,9 @@ namespace Spydr
 
 	void Application::Run()
 	{
+		WindowResizeEvent e(1920, 1080);
+		SP_TRACE(e);
+
 		while (true);
 	}
 }

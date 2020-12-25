@@ -5,7 +5,7 @@
       <UniqueIdentifier>{776C1C0E-E380-44BF-AC02-E81E18D640F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Spydr\Events">
-      <UniqueIdentifier>{a5e1a3d6-2b3e-456b-9970-df7cf099636e}</UniqueIdentifier>
+      <UniqueIdentifier>{7B8C7AFA-67EF-099F-1075-4255FCB6D521}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -17,9 +17,6 @@
       <Filter>Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\EntryPoint.h">
-      <Filter>Spydr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\Log.h">
       <Filter>Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Events\ApplicationEvent.h">
@@ -34,6 +31,10 @@
     <ClInclude Include="src\Spydr\Events\MouseEvent.h">
       <Filter>Spydr\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spydr\Log.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sppch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Spydr\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Spydr\Log.cpp">
       <Filter>Spydr</Filter>
     </ClCompile>
+    <ClCompile Include="src\sppch.cpp" />
   </ItemGroup>
 </Project>

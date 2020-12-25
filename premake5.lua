@@ -25,8 +25,12 @@ project "Spydr"
 	}
 
 	includedirs {
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
+
+	pchheader "sppch.h"
+	pchsource "Spydr/src/sppch.cpp"
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -68,6 +72,7 @@ project "Sandbox"
 	}
 
 	includedirs {
+		"%{prj.name}/src",
 		"Spydr/vendor/spdlog/include",
 		"Spydr/src"
 	}

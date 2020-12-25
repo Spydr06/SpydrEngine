@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Event.h"
-#include <sstream>
 
 namespace Spydr
 {
 	class SPYDR_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y)
-			: m_MouseX(x), m_MouseY(y)
+		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y)
 		{
 		}
 
@@ -24,7 +22,7 @@ namespace Spydr
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -48,7 +46,7 @@ namespace Spydr
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_XOffset, m_YOffset;
 	};

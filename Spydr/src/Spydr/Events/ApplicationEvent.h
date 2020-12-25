@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Event.h"
-#include <sstream>
 
 namespace Spydr
 {
 	class SPYDR_API WindowResizeEvent : public Event
 	{
 	public:
-		WindowResizeEvent(unsigned int width, unsigned int height)
-			: m_Width(width), m_Height(height)
+		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height)
 		{
 		}
 
