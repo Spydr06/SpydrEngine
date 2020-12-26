@@ -8,7 +8,6 @@
 
 #include <glad/glad.h>
 
-
 namespace Spydr
 {
 

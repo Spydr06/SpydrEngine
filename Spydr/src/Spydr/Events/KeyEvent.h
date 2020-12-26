@@ -13,8 +13,7 @@ namespace Spydr
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode)
-			: m_KeyCode(keycode)
+		KeyEvent(int keycode) : m_KeyCode(keycode)
 		{
 		}
 

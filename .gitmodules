@@ -7,3 +7,6 @@
 [submodule "Spydr/vendor/imgui"]
 	path = Spydr/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Spydr/vendor/glm"]
+	path = Spydr/vendor/glm
+	url = https://github.com/g-truc/glm
