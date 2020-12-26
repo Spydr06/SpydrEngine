@@ -10,11 +10,19 @@ public:
 	void OnUpdate() override
 	{
 		//SP_INFO("ExampleLayer::Update");
+		if (Spydr::Input::IsKeyPressed(SP_KEY_TAB)) {
+			SP_TRACE("Tab key is pressed!");
+		}
 	}
 
 	void OnEvent(Spydr::Event& event) override
 	{
-		//SP_TRACE("{0}", event);
+		if (event.GetEventType() == Spydr::EventType::KeyPressed) {
+			Spydr::KeyPressedEvent& e = (Spydr::KeyPressedEvent&)event;
+			if (e.IsAlphaNumericKey()) {
+				SP_TRACE("'{0}' is pressed", (char)e.GetKeyCode());
+			}
+		}
 	}
 };
 

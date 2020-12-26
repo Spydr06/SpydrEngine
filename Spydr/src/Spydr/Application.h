@@ -3,7 +3,7 @@
 #include "Window.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
-#include "Spydr/LayerStack.h"
+#include "Spydr/Layers/LayerStack.h"
 
 namespace Spydr
 {

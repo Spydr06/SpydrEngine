@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spydr/Input.h"
+#include "Spydr/Input/Input.h"
 
 namespace Spydr
 {

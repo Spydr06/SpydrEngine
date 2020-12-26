@@ -156,10 +156,12 @@
     <ClInclude Include="src\Spydr\Events\KeyEvent.h" />
     <ClInclude Include="src\Spydr\Events\MouseEvent.h" />
     <ClInclude Include="src\Spydr\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Spydr\Input.h" />
-    <ClInclude Include="src\Spydr\Layer.h" />
-    <ClInclude Include="src\Spydr\LayerStack.h" />
+    <ClInclude Include="src\Spydr\Input\Input.h" />
+    <ClInclude Include="src\Spydr\Input\KeyCodes.h" />
+    <ClInclude Include="src\Spydr\Layers\Layer.h" />
+    <ClInclude Include="src\Spydr\Layers\LayerStack.h" />
     <ClInclude Include="src\Spydr\Log.h" />
+    <ClInclude Include="src\Spydr\Input\MouseButtonCodes.h" />
     <ClInclude Include="src\Spydr\Window.h" />
     <ClInclude Include="src\sppch.h" />
   </ItemGroup>
@@ -169,8 +171,8 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spydr\Application.cpp" />
     <ClCompile Include="src\Spydr\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Spydr\Layer.cpp" />
-    <ClCompile Include="src\Spydr\LayerStack.cpp" />
+    <ClCompile Include="src\Spydr\Layers\Layer.cpp" />
+    <ClCompile Include="src\Spydr\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Spydr\Log.cpp" />
     <ClCompile Include="src\sppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

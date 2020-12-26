@@ -4,7 +4,7 @@
 #include "Spydr/Events/Event.h"
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
-#include "Spydr/Input.h"
+#include "Spydr/Input/Input.h"
 
 #include <glad/glad.h>
 
@@ -47,8 +47,6 @@ namespace Spydr
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-
-		SP_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
 			(*--it)->OnEvent(e);

@@ -52,12 +52,6 @@
     <ClInclude Include="src\Spydr\ImGui\ImGuiLayer.h">
       <Filter>Spydr\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\Layer.h">
-      <Filter>Spydr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\LayerStack.h">
-      <Filter>Spydr</Filter>
-    </ClInclude>
     <ClInclude Include="src\Spydr\Log.h">
       <Filter>Spydr</Filter>
     </ClInclude>
@@ -65,8 +59,16 @@
       <Filter>Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h" />
-    <ClInclude Include="src\Spydr\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Spydr\Layers\Layer.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Layers\LayerStack.h">
+      <Filter>Spydr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Input\Input.h" />
+    <ClInclude Include="src\Spydr\Input\KeyCodes.h" />
+    <ClInclude Include="src\Spydr\Input\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
@@ -81,16 +83,16 @@
     <ClCompile Include="src\Spydr\ImGui\ImGuiLayer.cpp">
       <Filter>Spydr\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spydr\Layer.cpp">
-      <Filter>Spydr</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Spydr\LayerStack.cpp">
-      <Filter>Spydr</Filter>
-    </ClCompile>
     <ClCompile Include="src\Spydr\Log.cpp">
       <Filter>Spydr</Filter>
     </ClCompile>
     <ClCompile Include="src\sppch.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Spydr\Layers\Layer.cpp">
+      <Filter>Spydr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Layers\LayerStack.cpp">
+      <Filter>Spydr</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"
+#include "Spydr/Input/KeyCodes.h"
 
 namespace Spydr
 {
@@ -8,6 +9,7 @@ namespace Spydr
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
+		inline bool IsAlphaNumericKey() const { return (m_KeyCode >= SP_KEY_0 && m_KeyCode <= SP_KEY_9) || (m_KeyCode >= SP_KEY_A && m_KeyCode <= SP_KEY_Z); }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
