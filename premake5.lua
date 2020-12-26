@@ -60,14 +60,17 @@ project "Spydr"
 
 	filter "configurations:Debug"
 		defines "SP_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SP_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "SP_DIST"
+		buildoptions "/MD"
 		symbols "On"
 
 project "Sandbox"
@@ -104,12 +107,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "SP_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SP_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "SP_DIST"
+		buildoptions "/MD"
 		symbols "On"

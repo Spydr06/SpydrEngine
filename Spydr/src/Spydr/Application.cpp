@@ -23,6 +23,16 @@ namespace Spydr
 
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
@@ -30,6 +40,13 @@ namespace Spydr
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
 		SP_CORE_TRACE("{0}", e);
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
+			(*--it)->OnEvent(e);
+			if (e.Handled) {
+				break;
+			}
+		}
 	}
 
 	void Application::Run()
@@ -37,6 +54,11 @@ namespace Spydr
 		while (m_Running) {
 			glClearColor(0, 0.3, 0.7, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack) {
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 	}
