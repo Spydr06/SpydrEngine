@@ -14,8 +14,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Spydr/vendor/GLFW/include"
+IncludeDir["Glad"] = "Spydr/vendor/Glad/include"
 
 include "Spydr/vendor/GLFW"
+include "Spydr/vendor/Glad"
 
 project "Spydr"
 	location "Spydr"
@@ -33,11 +35,13 @@ project "Spydr"
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links {
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -51,7 +55,8 @@ project "Spydr"
 
 		defines {
 			"SP_PLATFORM_WINDOWS",
-			"SP_BUILD_DLL"
+			"SP_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {

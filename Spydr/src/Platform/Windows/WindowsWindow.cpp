@@ -5,6 +5,8 @@
 #include "Spydr/Events/MouseEvent.h"
 #include "Spydr/Events/ApplicationEvent.h"
 
+#include <glad/glad.h>
+
 namespace Spydr
 {
 	static bool s_GLFWInitialized = false;
@@ -49,6 +51,11 @@ namespace Spydr
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		//OpenGL (Glad) initialization
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		SP_CORE_ASSERT(status, "Could not initialize Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

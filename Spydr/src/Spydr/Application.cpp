@@ -5,7 +5,7 @@
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Spydr
 {
