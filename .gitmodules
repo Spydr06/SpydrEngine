@@ -4,3 +4,6 @@
 [submodule "Spydr/vendor/glfw"]
 	path = Spydr/vendor/glfw
 	url = https://github.com/TheCherno/GLFW
+[submodule "Spydr/vendor/imgui"]
+	path = Spydr/vendor/imgui
+	url = https://github.com/TheCherno/imgui
