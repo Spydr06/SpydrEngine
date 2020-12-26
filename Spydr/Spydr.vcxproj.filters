@@ -65,6 +65,8 @@
       <Filter>Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h" />
+    <ClInclude Include="src\Spydr\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
@@ -89,5 +91,6 @@
       <Filter>Spydr</Filter>
     </ClCompile>
     <ClCompile Include="src\sppch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

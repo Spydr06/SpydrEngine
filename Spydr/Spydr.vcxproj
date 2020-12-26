@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Spydr.h" />
     <ClInclude Include="src\Spydr\Application.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\Spydr\Events\KeyEvent.h" />
     <ClInclude Include="src\Spydr\Events\MouseEvent.h" />
     <ClInclude Include="src\Spydr\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Spydr\Input.h" />
     <ClInclude Include="src\Spydr\Layer.h" />
     <ClInclude Include="src\Spydr\LayerStack.h" />
     <ClInclude Include="src\Spydr\Log.h" />
@@ -163,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spydr\Application.cpp" />
     <ClCompile Include="src\Spydr\ImGui\ImGuiLayer.cpp" />

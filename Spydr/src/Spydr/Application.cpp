@@ -4,8 +4,10 @@
 #include "Spydr/Events/Event.h"
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
+#include "Spydr/Input.h"
 
 #include <glad/glad.h>
+
 
 namespace Spydr
 {
@@ -65,6 +67,9 @@ namespace Spydr
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+
+			//auto [x, y] = Input::GetMousePosition();
+			//SP_CORE_TRACE("The mouse cursor is at [{0}, {1}].", x, y);
 
 			m_Window->OnUpdate();
 		}
