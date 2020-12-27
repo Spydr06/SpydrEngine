@@ -159,6 +159,7 @@
     <ClInclude Include="src\Spydr\Layers\LayerStack.h" />
     <ClInclude Include="src\Spydr\Log.h" />
     <ClInclude Include="src\Spydr\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Spydr\Renderer\Shader.h" />
     <ClInclude Include="src\Spydr\Window.h" />
     <ClInclude Include="src\sppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -588,6 +589,7 @@
     <ClCompile Include="src\sppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Spydr\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

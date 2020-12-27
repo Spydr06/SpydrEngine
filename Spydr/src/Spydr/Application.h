@@ -5,6 +5,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Spydr/Layers/LayerStack.h"
 
+#include "Spydr/Renderer/Shader.h"
+
 #include "Spydr/ImGui/ImGuiLayer.h"
 
 namespace Spydr
@@ -31,6 +33,9 @@ namespace Spydr
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
