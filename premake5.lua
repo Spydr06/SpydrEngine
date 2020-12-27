@@ -103,11 +103,13 @@ project "Sandbox"
 		"%{prj.name}/src",
 		"Spydr/vendor/spdlog/include",
 		"Spydr/src",
+		"Spydr/vendor",
 		"%{IncludeDir.glm}"
 	}
 
 	links {
-		"Spydr"
+		"Spydr",
+		"ImGui"
 	}
 
 	filter "system:windows"

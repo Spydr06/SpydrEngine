@@ -17,6 +17,7 @@ namespace Spydr
 		vvoid OnDetach() {}
 		vvoid OnUpdate() {}
 		vvoid OnEvent(Event& event) {}
+		vvoid OnImGuiRender() {}
 
 		inline const std::string& GetName() const { return m_DebugName; }
 	protected:

@@ -5,6 +5,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Spydr/Layers/LayerStack.h"
 
+#include "Spydr/ImGui/ImGuiLayer.h"
+
 namespace Spydr
 {
 	class SPYDR_API Application
@@ -26,6 +28,7 @@ namespace Spydr
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

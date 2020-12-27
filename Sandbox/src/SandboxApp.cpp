@@ -1,4 +1,5 @@
 #include <Spydr.h>
+#include <imgui/imgui.h>
 
 class ExampleLayer : public Spydr::Layer
 {
@@ -24,6 +25,13 @@ public:
 			}
 		}
 	}
+
+	void OnImGuiRender()
+	{
+		ImGui::Begin("Sandbox");
+		ImGui::Text("Hello from Sandbox");
+		ImGui::End();
+	}
 };
 
 class Sandbox : public Spydr::Application
@@ -32,7 +40,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Spydr::ImGuiLayer());
 	}
 
 	~Sandbox()
