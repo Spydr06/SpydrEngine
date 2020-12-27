@@ -18,6 +18,8 @@ namespace Spydr
 	};
 }
 
+#undef SP_ERROR //undef SP_ERROR because its used by an external lib
+
 //Core log macros
 #define SP_CORE_FATAL(...) ::Spydr::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 #define SP_CORE_ERROR(...) ::Spydr::Log::GetCoreLogger()->error(__VA_ARGS__)

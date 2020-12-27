@@ -3,9 +3,10 @@
 #ifdef SP_PLATFORM_WINDOWS
 	#ifdef SP_BUILD_DLL
 		#define SPYDR_API __declspec(dllexport)
-	#else 
-		#define SPYDR_API __declspec(dllimport)
+	//#else 
+		//#define SPYDR_API __declspec(dllimport)
 	#endif
+	#define SPYDR_API
 #else
 	#error SpydrEngine only supports Windows.
 #endif
