@@ -18,7 +18,7 @@ namespace Spydr
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		SP_CORE_ASSERT(status, "Could not initialize Glad!");
 
-		SP_CORE_WARN("OpenGL Info:");
+		SP_CORE_TRACE("==== OpenGL Info: ====");
 		SP_CORE_TRACE("  -> Vendor: {0}", glGetString(GL_VENDOR));
 		SP_CORE_TRACE("  -> Renderer: {0}", glGetString(GL_RENDERER));
 		SP_CORE_TRACE("  -> Version: {0}", glGetString(GL_VERSION));
