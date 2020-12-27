@@ -6,16 +6,18 @@
 
 namespace Spydr
 {
+#define log_ptr static std::shared_ptr<spdlog::logger>
 	class SPYDR_API Log
 	{
 	public:
 		static void Init();
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() {return s_CoreLogger;}
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		inline log_ptr& GetCoreLogger() {return s_CoreLogger;}
+		inline log_ptr& GetClientLogger() { return s_ClientLogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+		log_ptr s_CoreLogger;
+		log_ptr s_ClientLogger;
 	};
+#undef log_ptr
 }
 
 #undef SP_ERROR //undef SP_ERROR because its used by an external lib

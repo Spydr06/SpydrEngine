@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Spydr/Window.h"
+#include "Spydr/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"
 
 namespace Spydr
 {
+#define uint unsigned int
+#define vvoid virtual void
 	class WindowsWindow : public Window
 	{
 	public:
@@ -14,26 +17,27 @@ namespace Spydr
 
 		void OnUpdate() override;
 
-		inline unsigned int GetWidth() const override { return m_Data.Width; }
-		inline unsigned int GetHeight() const override { return m_Data.Height; }
+		inline uint GetWidth() const override { return m_Data.Width; }
+		inline uint GetHeight() const override { return m_Data.Height; }
 
 		//Window attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		inline virtual void* GetNativeWindow() const { return m_Window; };
+		inline vvoid* GetNativeWindow() const { return m_Window; };
 	private:
-		virtual void Init(const WindowProps& props);
-		virtual void Shutdown();
+		vvoid Init(const WindowProps& props);
+		vvoid Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
 			std::string Title;
-			unsigned int Width;
-			unsigned int Height;
+			uint Width;
+			uint Height;
 			bool VSync;
 
 			EventCallbackFn EventCallback;
@@ -41,4 +45,6 @@ namespace Spydr
 
 		WindowData m_Data;
 	};
+#undef uint
+#undef vvoid
 }

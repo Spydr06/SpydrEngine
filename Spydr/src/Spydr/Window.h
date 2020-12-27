@@ -9,7 +9,7 @@ namespace Spydr
 {
 #define vvoid virtual void
 #define uint unsigned int
-#define vuint virtual unsigned int
+#define vuint virtual uint
 
 	struct WindowProps
 	{

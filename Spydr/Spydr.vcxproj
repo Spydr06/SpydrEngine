@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Spydr.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="src\Spydr\Layers\Layer.h" />
     <ClInclude Include="src\Spydr\Layers\LayerStack.h" />
     <ClInclude Include="src\Spydr\Log.h" />
+    <ClInclude Include="src\Spydr\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Spydr\Window.h" />
     <ClInclude Include="src\sppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -574,6 +576,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spydr\Application.cpp" />
