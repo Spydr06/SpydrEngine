@@ -7,6 +7,7 @@
 
 #include "Spydr/Renderer/Shader.h"
 #include "Spydr/Renderer/Buffer.h"
+#include "Spydr/Renderer/VertexArray.h"
 
 #include "Spydr/ImGui/ImGuiLayer.h"
 
@@ -30,15 +31,13 @@ namespace Spydr
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
-		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::unique_ptr<Window> m_Window;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
 	private:
 		static Application* s_Instance;
 	};

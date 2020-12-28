@@ -143,6 +143,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Spydr.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\Spydr\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Spydr\Renderer\Renderer.h" />
     <ClInclude Include="src\Spydr\Renderer\Shader.h" />
+    <ClInclude Include="src\Spydr\Renderer\VertexArray.h" />
     <ClInclude Include="src\Spydr\Window.h" />
     <ClInclude Include="src\sppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -584,6 +586,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Spydr\Application.cpp" />
@@ -598,6 +601,7 @@
     <ClCompile Include="src\Spydr\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Spydr\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
