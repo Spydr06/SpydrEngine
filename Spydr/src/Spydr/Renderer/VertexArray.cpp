@@ -9,10 +9,10 @@ namespace Spydr
 	VertexArray* VertexArray::Create()
 	{
 		switch (Renderer::GetAPI()) {
-		case RendererAPI::None:		
+		case RenderAPI::API::None:
 			SP_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return false;
-		case RendererAPI::OpenGL:
+		case RenderAPI::API::OpenGL:
 			return new OpenGLVertexArray();
 		}
 

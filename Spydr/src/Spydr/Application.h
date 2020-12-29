@@ -8,6 +8,7 @@
 #include "Spydr/Renderer/Shader.h"
 #include "Spydr/Renderer/Buffer.h"
 #include "Spydr/Renderer/VertexArray.h"
+#include "Spydr/Renderer/Renderer.h"
 
 #include "Spydr/ImGui/ImGuiLayer.h"
 

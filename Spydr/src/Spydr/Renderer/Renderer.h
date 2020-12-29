@@ -1,17 +1,16 @@
 #pragma once
 
-namespace Spydr
-{
-	enum class RendererAPI
-	{
-		None = 0, OpenGL = 1
-	};
+#include "RenderCommand.h"
 
+namespace Spydr {
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetAPI() { return s_RendererAPI; }
-	private:
-		static RendererAPI s_RendererAPI;
+		static void BeginScene();
+		static void EndScene();
+
+		static void SubmitVertexData(const std::shared_ptr<VertexArray>& vertexData);
+
+		inline static RenderAPI::API GetAPI() { return RenderAPI::GetAPI(); }
 	};
 }

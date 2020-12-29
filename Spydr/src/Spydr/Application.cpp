@@ -1,14 +1,10 @@
 #include "sppch.h"
 #include "Application.h"
 
-#include "Spydr/Events/Event.h"
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
+
 #include "Spydr/Input/Input.h"
-
-#include "Platform/OpenGL/OpenGLBuffer.h"
-
-#include <glad/glad.h>
 
 namespace Spydr
 {
@@ -16,8 +12,6 @@ namespace Spydr
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
-
-
 
 	Application::Application()
 	{
@@ -40,6 +34,8 @@ namespace Spydr
 			 0.0f,  0.4f, 0.0f, 0.8f, 0.8f, 0.8f, 1.0f
 		};
 
+		unsigned int indices[9]{ 0, 1, 2, 2, 3, 0, 4, 5, 6 };
+
 		m_VertexArray.reset(VertexArray::Create());
 
 		std::shared_ptr<VertexBuffer> vertexBuffer;
@@ -50,9 +46,7 @@ namespace Spydr
 			{ ShaderDataType::Float4, "a_Color" }
 		};
 		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-		unsigned int indices[9]{ 0, 1, 2, 2, 3, 0, 4, 5, 6 };
+		m_VertexArray->AddVertexBuffer(vertexBuffer); long l = 2L + 6.0f;
 
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
@@ -125,12 +119,15 @@ namespace Spydr
 	void Application::Run()
 	{
 		while (m_Running) {
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+			Renderer::SubmitVertexData(m_VertexArray);
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();

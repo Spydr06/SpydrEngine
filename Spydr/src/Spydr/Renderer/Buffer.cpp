@@ -10,10 +10,10 @@ namespace Spydr
 	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI()) {
-		case RendererAPI::None: 
+		case RenderAPI::API::None: 
 			SP_CORE_ASSERT(false, "RendererAPI::None is not supported.");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RenderAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -24,10 +24,10 @@ namespace Spydr
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
 	{
 		switch (Renderer::GetAPI()) {
-		case RendererAPI::None:
+		case RenderAPI::API::None:
 			SP_CORE_ASSERT(false, "RendererAPI::None is not supported.");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RenderAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, size);
 		}
 
