@@ -13,7 +13,7 @@ namespace Spydr
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application() : m_Camera(new OrthographicCamera(-1.6f, 1.6f, -0.9f, 0.9f))
 	{
 		SP_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -23,6 +23,7 @@ namespace Spydr
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+		PushLayer(m_Camera);
 
 		float vertices[7 * 7] {
 			-0.6f, -0.6f, 0.0f, 0.8f, 0.2f, 0.3f, 1.0f,
@@ -46,7 +47,7 @@ namespace Spydr
 			{ ShaderDataType::Float4, "a_Color" }
 		};
 		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer); long l = 2L + 6.0f;
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
@@ -58,13 +59,15 @@ namespace Spydr
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
 			void main() {
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1);
 			}
 		)";
 
@@ -122,11 +125,8 @@ namespace Spydr
 			RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
-
-			m_Shader->Bind();
-
-			Renderer::SubmitVertexData(m_VertexArray);
+			Renderer::BeginScene(*m_Camera);
+			Renderer::SubmitVertexData(m_VertexArray, m_Shader);
 			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack) {

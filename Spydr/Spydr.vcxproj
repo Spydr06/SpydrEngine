@@ -164,6 +164,7 @@
     <ClInclude Include="src\Spydr\Layers\LayerStack.h" />
     <ClInclude Include="src\Spydr\Log.h" />
     <ClInclude Include="src\Spydr\Renderer\Buffer.h" />
+    <ClInclude Include="src\Spydr\Renderer\Cameras\OrthographicCamera.h" />
     <ClInclude Include="src\Spydr\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Spydr\Renderer\RenderAPI.h" />
     <ClInclude Include="src\Spydr\Renderer\RenderCommand.h" />
@@ -605,6 +606,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Spydr\Renderer\Cameras\OrthographicCamera.cpp" />
     <ClCompile Include="src\Spydr\Renderer\RenderAPI.cpp" />
     <ClCompile Include="src\Spydr\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp" />

@@ -1,2 +1,35 @@
 #pragma once
 
+#include <glm/glm.hpp>
+#include "Spydr/Layers/Layer.h"
+
+namespace Spydr
+{
+	class OrthographicCamera : public Layer
+	{
+	public:
+		OrthographicCamera(float left, float right, float bottom, float top, float near_ = -1.0f, float far_ = 1.0f);
+
+		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
+		const glm::vec3& GetPosition() const { return m_Position; }
+
+		void SetRotation(float rotation) { m_Rotation = rotation;  RecalculateViewMatrix(); }
+		float GetRotation() const { return m_Rotation; }
+		 
+		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
+		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
+		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
+
+		virtual void OnUpdate() override;
+		virtual void OnEvent(Event& event) override;
+	private:
+		void RecalculateViewMatrix();
+
+		glm::mat4 m_ProjectionMatrix;
+		glm::mat4 m_ViewMatrix;
+		glm::mat4 m_ViewProjectionMatrix;
+
+		glm::vec3 m_Position;
+		float m_Rotation = 0.0f;
+	};
+}

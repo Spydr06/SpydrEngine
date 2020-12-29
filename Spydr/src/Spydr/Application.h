@@ -9,6 +9,7 @@
 #include "Spydr/Renderer/Buffer.h"
 #include "Spydr/Renderer/VertexArray.h"
 #include "Spydr/Renderer/Renderer.h"
+#include "Spydr/Renderer/Cameras/OrthographicCamera.h"
 
 #include "Spydr/ImGui/ImGuiLayer.h"
 
@@ -39,6 +40,7 @@ namespace Spydr
 		std::unique_ptr<Window> m_Window;
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
+		OrthographicCamera* m_Camera;
 	private:
 		static Application* s_Instance;
 	};
