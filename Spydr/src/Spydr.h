@@ -15,6 +15,14 @@
 #include "Spydr/Events/KeyEvent.h"
 #include "Spydr/Events/MouseEvent.h"
 
+#include "Spydr/Renderer/Buffer.h"
+#include "Spydr/Renderer/Shader.h"
+#include "Spydr/Renderer/VertexArray.h"
+#include "Spydr/Renderer/RenderAPI.h"
+#include "Spydr/Renderer/Renderer.h"
+#include "Spydr/Renderer/RenderAPI.h"
+#include "Spydr/Renderer/Cameras/OrthographicCamera.h"
+
 // ==== Entry Point ====
 #include "Spydr/EntryPoint.h"
 // =====================

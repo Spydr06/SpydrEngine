@@ -22,38 +22,4 @@ namespace Spydr
 		m_ViewMatrix = glm::inverse(transform);
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
-
-	void OrthographicCamera::OnUpdate()
-	{
-		glm::vec3 movement = glm::vec3(0.0f, 0.0f, 0.0f);
-		if (Input::IsKeyPressed(SP_KEY_W)) {
-			movement.y += 0.075f;
-		}
-		else if (Input::IsKeyPressed(SP_KEY_S)) {
-			movement.y -= 0.075f;
-		}
-		
-		if (Input::IsKeyPressed(SP_KEY_D)) {
-			movement.x += 0.075f;
-		}
-		else if (Input::IsKeyPressed(SP_KEY_A)) {
-			movement.x -= 0.075f;
-		}
-
-		if (movement != glm::vec3(0.0f, 0.0f, 0.0f)) {
-			m_Position += movement;
-			RecalculateViewMatrix();
-		}
-	}
-
-	void OrthographicCamera::OnEvent(Event& event)
-	{
-		if (event.GetEventType() == EventType::KeyPressed) {
-			KeyPressedEvent& e = (KeyPressedEvent&)event;
-			if (e.GetKeyCode() == SP_KEY_F1) {
-				m_Position = glm::vec3(0.0f, 0.0f, 0.0f);
-				RecalculateViewMatrix();
-			}
-		}
-	}
 }

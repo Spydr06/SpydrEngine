@@ -38,9 +38,6 @@ namespace Spydr
 		LayerStack m_LayerStack;
 
 		std::unique_ptr<Window> m_Window;
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		OrthographicCamera* m_Camera;
 	private:
 		static Application* s_Instance;
 	};

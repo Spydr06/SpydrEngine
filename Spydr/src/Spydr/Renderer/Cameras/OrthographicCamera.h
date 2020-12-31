@@ -5,7 +5,7 @@
 
 namespace Spydr
 {
-	class OrthographicCamera : public Layer
+	class OrthographicCamera
 	{
 	public:
 		OrthographicCamera(float left, float right, float bottom, float top, float near_ = -1.0f, float far_ = 1.0f);
@@ -19,9 +19,6 @@ namespace Spydr
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
-
-		virtual void OnUpdate() override;
-		virtual void OnEvent(Event& event) override;
 	private:
 		void RecalculateViewMatrix();
 
