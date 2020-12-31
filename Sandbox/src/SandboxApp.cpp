@@ -70,20 +70,21 @@ public:
 		m_Shader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Spydr::Timestep ts) override
 	{
+		m_Time = ts;
 		glm::vec3 cameraPosition = m_Camera->GetPosition();
 		if (Spydr::Input::IsKeyPressed(SP_KEY_W)) {
-			cameraPosition.y += 0.1f;
+			cameraPosition.y += m_CameraSpeed * m_Time;
 		}
 		if (Spydr::Input::IsKeyPressed(SP_KEY_A)) {
-			cameraPosition.x -= 0.1f;
+			cameraPosition.x -= m_CameraSpeed * m_Time;
 		}
 		if (Spydr::Input::IsKeyPressed(SP_KEY_S)) {
-			cameraPosition.y -= 0.1f;
+			cameraPosition.y -= m_CameraSpeed * m_Time;
 		}
 		if (Spydr::Input::IsKeyPressed(SP_KEY_D)) {
-			cameraPosition.x += 0.1;
+			cameraPosition.x += m_CameraSpeed * m_Time;
 		}
 		m_Camera->SetPosition(cameraPosition);
 
@@ -101,11 +102,18 @@ public:
 
 	void OnImGuiRender()
 	{
+		ImGui::Begin("Sandbox");
+		ImGui::Text("Frame Rate: ");
+		ImGui::Text("%i",(int) (1 / m_Time));
+		ImGui::End();
 	}
 private:
 	std::shared_ptr<Spydr::Shader> m_Shader;
 	std::shared_ptr<Spydr::VertexArray> m_VertexArray;
 	Spydr::OrthographicCamera* m_Camera;
+
+	float m_CameraSpeed = 2.5f;
+	float m_Time = 0.0f;
 };
 
 class Sandbox : public Spydr::Application

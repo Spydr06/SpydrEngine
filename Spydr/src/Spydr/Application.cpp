@@ -3,6 +3,7 @@
 
 #include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Log.h"
+#include "GLFW/glfw3.h"
 
 #include "Spydr/Input/Input.h"
 
@@ -60,8 +61,12 @@ namespace Spydr
 	void Application::Run()
 	{
 		while (m_Running) {
+			float time = (float) glfwGetTime(); //TODO: Platform::GetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();	

@@ -150,6 +150,7 @@
     <ClInclude Include="src\Spydr.h" />
     <ClInclude Include="src\Spydr\Application.h" />
     <ClInclude Include="src\Spydr\Core.h" />
+    <ClInclude Include="src\Spydr\Core\Timestep.h" />
     <ClInclude Include="src\Spydr\EntryPoint.h" />
     <ClInclude Include="src\Spydr\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Spydr\Events\Event.h" />

@@ -2,6 +2,7 @@
 
 #include "Spydr/Core.h"
 #include "Spydr/Events/Event.h"
+#include "Spydr/Core/Timestep.h"
 
 namespace Spydr
 {
@@ -15,7 +16,7 @@ namespace Spydr
 
 		vvoid OnAttach() {}
 		vvoid OnDetach() {}
-		vvoid OnUpdate() {}
+		vvoid OnUpdate(Timestep ts) {}
 		vvoid OnEvent(Event& event) {}
 		vvoid OnImGuiRender() {}
 

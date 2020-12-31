@@ -1358,6 +1358,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h" />
     <ClInclude Include="src\Spydr\ImGui\ImGuiThemes.h" />
     <ClInclude Include="src\Spydr\Renderer\Cameras\OrthographicCamera.h" />
+    <ClInclude Include="src\Spydr\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">

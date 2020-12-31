@@ -5,11 +5,7 @@
 #include "Events/ApplicationEvent.h"
 #include "Spydr/Layers/LayerStack.h"
 
-#include "Spydr/Renderer/Shader.h"
-#include "Spydr/Renderer/Buffer.h"
-#include "Spydr/Renderer/VertexArray.h"
-#include "Spydr/Renderer/Renderer.h"
-#include "Spydr/Renderer/Cameras/OrthographicCamera.h"
+#include "Spydr/Core/Timestep.h"
 
 #include "Spydr/ImGui/ImGuiLayer.h"
 
@@ -38,6 +34,7 @@ namespace Spydr
 		LayerStack m_LayerStack;
 
 		std::unique_ptr<Window> m_Window;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
