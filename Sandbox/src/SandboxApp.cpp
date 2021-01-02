@@ -1,19 +1,21 @@
 #include <Spydr.h>
 #include <imgui/imgui.h>
 
+#include "glm/gtc/matrix_transform.hpp"
+
 class ExampleLayer : public Spydr::Layer
 {
 public:
-	ExampleLayer() : Layer("Example")
+	ExampleLayer() : Layer("Example"), m_SquarePosition({ 0.0f, 0.0f, 0.0f })
 	{
 		float vertices[7 * 7]{
-			-0.6f, -0.6f, 0.0f, 0.8f, 0.2f, 0.3f, 1.0f,
-			 0.6f, -0.6f, 0.0f,	0.2f, 0.8f, 0.3f, 1.0f,
-			 0.6f,  0.6f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			-0.6f,  0.6f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-			-0.4f, -0.4f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-			 0.4f, -0.4f, 0.0f, 0.2f, 0.2f, 0.2f, 1.0f,
-			 0.0f,  0.4f, 0.0f, 0.8f, 0.8f, 0.8f, 1.0f
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.3f, 1.0f,
+			 0.5f, -0.5f, 0.0f,	0.2f, 0.8f, 0.3f, 1.0f,
+			 0.5f,  0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+			-0.3f, -0.3f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+			 0.3f, -0.3f, 0.0f, 0.2f, 0.2f, 0.2f, 1.0f,
+			 0.0f,  0.3f, 0.0f, 0.8f, 0.8f, 0.8f, 1.0f
 		};
 
 		unsigned int indices[9]{ 0, 1, 2, 2, 3, 0, 4, 5, 6 };
@@ -42,6 +44,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -49,7 +52,7 @@ public:
 			void main() {
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1);
 			}
 		)";
 
@@ -72,6 +75,26 @@ public:
 
 	void OnUpdate(Spydr::Timestep ts) override
 	{
+		Move(ts);
+
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
+
+		Spydr::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+		Spydr::RenderCommand::Clear();
+
+		Spydr::Renderer::BeginScene(*m_Camera);
+
+		for (int i = 0; i < 5; i++) {
+			glm::vec3 pos(i * 0.22f, 0.0f, 0.0f);
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+			Spydr::Renderer::SubmitVertexData(m_VertexArray, m_Shader, transform);
+		}
+
+		Spydr::Renderer::EndScene();
+	}
+
+	void Move(Spydr::Timestep ts)
+	{
 		m_Time = ts;
 		glm::vec3 cameraPosition = m_Camera->GetPosition();
 		if (Spydr::Input::IsKeyPressed(SP_KEY_W)) {
@@ -88,12 +111,14 @@ public:
 		}
 		m_Camera->SetPosition(cameraPosition);
 
-		Spydr::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-		Spydr::RenderCommand::Clear();
-
-		Spydr::Renderer::BeginScene(*m_Camera);
-		Spydr::Renderer::SubmitVertexData(m_VertexArray, m_Shader);
-		Spydr::Renderer::EndScene();
+		float cameraRotation = m_Camera->GetRotation();
+		if (Spydr::Input::IsKeyPressed(SP_KEY_Y)) {
+			cameraRotation += m_RotationSpeed * m_Time;
+		}
+		if (Spydr::Input::IsKeyPressed(SP_KEY_X)) {
+			cameraRotation -= m_RotationSpeed * m_Time;
+		}
+		m_Camera->SetRotation(cameraRotation);
 	}
 
 	void OnEvent(Spydr::Event& event) override
@@ -105,6 +130,13 @@ public:
 		ImGui::Begin("Sandbox");
 		ImGui::Text("Frame Rate: ");
 		ImGui::Text("%i",(int) (1 / m_Time));
+
+		ImGui::Checkbox("Show Demo Window", &m_ShowImGuiDemoWindow);
+		if (m_ShowImGuiDemoWindow) {
+			bool show = true;
+			ImGui::ShowDemoWindow(&show);
+		}
+
 		ImGui::End();
 	}
 private:
@@ -113,7 +145,12 @@ private:
 	Spydr::OrthographicCamera* m_Camera;
 
 	float m_CameraSpeed = 2.5f;
+	float m_RotationSpeed = 50.0f;
 	float m_Time = 0.0f;
+
+	bool m_ShowImGuiDemoWindow = true;
+
+	glm::vec3 m_SquarePosition;
 };
 
 class Sandbox : public Spydr::Application
