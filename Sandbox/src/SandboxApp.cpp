@@ -64,9 +64,12 @@ public:
 			in vec3 v_Position;
 			in vec4 v_Color;
 
+			uniform vec4 u_Color;
+
 			void main() {
 				//color = vec4(v_Position * 0.5 + 0.5, 1.0);
-				color = v_Color;
+				//color = v_Color * u_Color;
+				color = u_Color;
 			}
 		)";
 
@@ -84,9 +87,22 @@ public:
 
 		Spydr::Renderer::BeginScene(*m_Camera);
 
+		//Future material system:
+		//Spydr::MaterialRef material = new Spydr::Material(m_Shader);
+		//Spydr::MaterialInstanceRef mi = new Spydr::MaterialInstance(material);
+		//material->Set("u_Color", redColor);
+
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 		for (int i = 0; i < 5; i++) {
 			glm::vec3 pos(i * 0.22f, 0.0f, 0.0f);
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+
+			if (i % 2 == 0) {
+				m_Shader->UploadUniformFloat4("u_Color", redColor);
+			} else {
+				m_Shader->UploadUniformFloat4("u_Color", blueColor);	
+			}
 			Spydr::Renderer::SubmitVertexData(m_VertexArray, m_Shader, transform);
 		}
 
