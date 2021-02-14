@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef SP_PLATFORM_WINDOWS
 	#ifdef SP_BUILD_DLL
 		#define SPYDR_API __declspec(dllexport)
@@ -22,3 +24,11 @@
 #define BIT(x) (1 << x)
 #define SP_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 #define ARRAY_SIZE(x) std::size(x)
+
+namespace Spydr {
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

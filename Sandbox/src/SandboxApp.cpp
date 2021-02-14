@@ -25,7 +25,7 @@ public:
 		m_Camera = new Spydr::OrthographicCamera(-1.6f, 1.6f, -0.9f, 0.9f);
 		m_VertexArray.reset(Spydr::VertexArray::Create());
 
-		std::shared_ptr<Spydr::VertexBuffer> vertexBuffer;
+		Spydr::Ref<Spydr::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Spydr::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Spydr::BufferLayout layout = {
@@ -35,7 +35,7 @@ public:
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-		std::shared_ptr<Spydr::IndexBuffer> indexBuffer;
+		Spydr::Ref<Spydr::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -160,8 +160,8 @@ public:
 		ImGui::End();
 	}
 private:
-	std::shared_ptr<Spydr::Shader> m_Shader;
-	std::shared_ptr<Spydr::VertexArray> m_VertexArray;
+	Spydr::Ref<Spydr::Shader> m_Shader;
+	Spydr::Ref<Spydr::VertexArray> m_VertexArray;
 	Spydr::OrthographicCamera* m_Camera;
 
 	float m_CameraSpeed = 2.5f;
