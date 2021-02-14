@@ -5,7 +5,7 @@
 
 namespace Spydr
 {
-	Shader* Shader::Create(std::string vertexSrc, std::string fragmentSrc)
+	Shader* Shader::Create(std::string& vertexSrc, std::string& fragmentSrc)
 	{
 		switch (Renderer::GetAPI()) {
 		case RenderAPI::API::None:

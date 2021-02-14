@@ -2,6 +2,8 @@
 #include <imgui/imgui.h>
 
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "Platform/OpenGL/OpenGLShader.h"
 
 class ExampleLayer : public Spydr::Layer
 {
@@ -64,12 +66,12 @@ public:
 			in vec3 v_Position;
 			in vec4 v_Color;
 
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main() {
 				//color = vec4(v_Position * 0.5 + 0.5, 1.0);
 				//color = v_Color * u_Color;
-				color = u_Color;
+				color = vec4(u_Color, 1);
 			}
 		)";
 
@@ -92,17 +94,14 @@ public:
 		//Spydr::MaterialInstanceRef mi = new Spydr::MaterialInstance(material);
 		//material->Set("u_Color", redColor);
 
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_Shader)->Bind();
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_Shader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 		for (int i = 0; i < 5; i++) {
 			glm::vec3 pos(i * 0.22f, 0.0f, 0.0f);
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-
-			if (i % 2 == 0) {
-				m_Shader->UploadUniformFloat4("u_Color", redColor);
-			} else {
-				m_Shader->UploadUniformFloat4("u_Color", blueColor);	
-			}
 			Spydr::Renderer::SubmitVertexData(m_VertexArray, m_Shader, transform);
 		}
 
@@ -154,6 +153,11 @@ public:
 		}
 
 		ImGui::End();
+
+		ImGui::Begin("Settings");
+		ImGui::Text("Square Color:");
+		ImGui::ColorPicker3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 private:
 	std::shared_ptr<Spydr::Shader> m_Shader;
@@ -167,6 +171,7 @@ private:
 	bool m_ShowImGuiDemoWindow = true;
 
 	glm::vec3 m_SquarePosition;
+	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
 };
 
 class Sandbox : public Spydr::Application
