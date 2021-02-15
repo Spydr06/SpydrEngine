@@ -10,17 +10,14 @@ class ExampleLayer : public Spydr::Layer
 public:
 	ExampleLayer() : Layer("Example"), m_SquarePosition({ 0.0f, 0.0f, 0.0f })
 	{
-		float vertices[7 * 7]{
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.3f, 1.0f,
-			 0.5f, -0.5f, 0.0f,	0.2f, 0.8f, 0.3f, 1.0f,
-			 0.5f,  0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			-0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-			-0.3f, -0.3f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-			 0.3f, -0.3f, 0.0f, 0.2f, 0.2f, 0.2f, 1.0f,
-			 0.0f,  0.3f, 0.0f, 0.8f, 0.8f, 0.8f, 1.0f
+		float vertices[5 * 4]{
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		unsigned int indices[9]{ 0, 1, 2, 2, 3, 0, 4, 5, 6 };
+		unsigned int indices[6]{ 0, 1, 2, 2, 3, 0 };
 
 		m_Camera = new Spydr::OrthographicCamera(-1.6f, 1.6f, -0.9f, 0.9f);
 		m_VertexArray.reset(Spydr::VertexArray::Create());
@@ -30,7 +27,7 @@ public:
 
 		Spydr::BufferLayout layout = {
 			{ Spydr::ShaderDataType::Float3, "a_Position" },
-			{ Spydr::ShaderDataType::Float4, "a_Color" }
+			{ Spydr::ShaderDataType::Float2, "a_TexCoord" },
 		};
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
@@ -43,17 +40,14 @@ public:
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
-			out vec4 v_Color;
 
 			void main() {
 				v_Position = a_Position;
-				v_Color = a_Color;
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1);
 			}
 		)";
@@ -64,18 +58,54 @@ public:
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
-			in vec4 v_Color;
 
 			uniform vec3 u_Color;
 
 			void main() {
-				//color = vec4(v_Position * 0.5 + 0.5, 1.0);
-				//color = v_Color * u_Color;
 				color = vec4(u_Color, 1);
 			}
 		)";
 
-		m_Shader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
+		m_FlatColorShader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
+
+		vertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main() {
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1);
+			}
+		)";
+
+		fragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			uniform sampler2D u_Texture;
+
+			in vec2 v_TexCoord;
+
+			void main() {
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
+
+		m_Texture = Spydr::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = Spydr::Texture2D::Create("assets/textures/SpydrLogo.png");
+
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Spydr::Timestep ts) override
@@ -90,20 +120,26 @@ public:
 		Spydr::Renderer::BeginScene(*m_Camera);
 
 		//Future material system:
-		//Spydr::MaterialRef material = new Spydr::Material(m_Shader);
+		//Spydr::MaterialRef material = new Spydr::Material(m_FlatColorShader);
 		//Spydr::MaterialInstanceRef mi = new Spydr::MaterialInstance(material);
 		//material->Set("u_Color", redColor);
 
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_Shader)->Bind();
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_Shader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
-		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
-		for (int i = 0; i < 5; i++) {
-			glm::vec3 pos(i * 0.22f, 0.0f, 0.0f);
-			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-			Spydr::Renderer::SubmitVertexData(m_VertexArray, m_Shader, transform);
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				glm::vec3 pos(i * 0.22f, j * 0.22f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Spydr::Renderer::SubmitVertexData(m_VertexArray, m_FlatColorShader, transform);
+			}
 		}
+
+		m_Texture->Bind();
+		Spydr::Renderer::SubmitVertexData(m_VertexArray, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
+
+		m_LogoTexture->Bind();
+		Spydr::Renderer::SubmitVertexData(m_VertexArray, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
 
 		Spydr::Renderer::EndScene();
 	}
@@ -160,10 +196,11 @@ public:
 		ImGui::End();
 	}
 private:
-	Spydr::Ref<Spydr::Shader> m_Shader;
+	Spydr::Ref<Spydr::Shader> m_FlatColorShader, m_TextureShader;
 	Spydr::Ref<Spydr::VertexArray> m_VertexArray;
-	Spydr::OrthographicCamera* m_Camera;
+	Spydr::Ref<Spydr::Texture2D> m_Texture, m_LogoTexture;
 
+	Spydr::OrthographicCamera* m_Camera;
 	float m_CameraSpeed = 2.5f;
 	float m_RotationSpeed = 50.0f;
 	float m_Time = 0.0f;

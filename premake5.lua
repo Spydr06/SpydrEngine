@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Spydr/vendor/GLFW/include"
 IncludeDir["Glad"] = "Spydr/vendor/Glad/include"
 IncludeDir["ImGui"] = "Spydr/vendor/imgui"
 IncludeDir["glm"] = "Spydr/vendor/glm"
+IncludeDir["stb_image"] = "Spydr/vendor/stb_image"
 
 include "Spydr/vendor/GLFW"
 include "Spydr/vendor/Glad"
@@ -35,6 +36,8 @@ project "Spydr"
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -45,7 +48,8 @@ project "Spydr"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links {

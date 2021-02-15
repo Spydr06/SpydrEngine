@@ -19,6 +19,7 @@
 
 #include "Spydr/Renderer/Buffer.h"
 #include "Spydr/Renderer/Shader.h"
+#include "Spydr/Renderer/Texture.h"
 #include "Spydr/Renderer/VertexArray.h"
 #include "Spydr/Renderer/RenderAPI.h"
 #include "Spydr/Renderer/Renderer.h"
