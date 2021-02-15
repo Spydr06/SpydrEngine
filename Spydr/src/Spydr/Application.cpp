@@ -26,8 +26,7 @@ namespace Spydr
 		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer);
-		
+		PushOverlay(m_ImGuiLayer);	
 	}
 
 	Application::~Application()

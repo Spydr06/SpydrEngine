@@ -18,4 +18,17 @@ namespace Spydr
 		SP_CORE_ASSERT(false, "Unknown Renderer API");
 		return nullptr;
 	}
+
+	Shader* Shader::Create(const std::string& filepath) {
+		switch (Renderer::GetAPI()) {
+		case RenderAPI::API::None:
+			SP_CORE_ASSERT(false, "RendererAPI::None is not supported.");
+			return nullptr;
+		case RenderAPI::API::OpenGL:
+			return new OpenGLShader(filepath);
+		}
+
+		SP_CORE_ASSERT(false, "Unknown Renderer API");
+		return nullptr;
+	}
 }

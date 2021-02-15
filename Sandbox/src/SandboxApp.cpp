@@ -10,7 +10,7 @@ class ExampleLayer : public Spydr::Layer
 public:
 	ExampleLayer() : Layer("Example"), m_SquarePosition({ 0.0f, 0.0f, 0.0f })
 	{
-		float vertices[5 * 4]{
+		float vertices[5 * 4] {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
@@ -36,70 +36,8 @@ public:
 		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec3 v_Position;
-
-			void main() {
-				v_Position = a_Position;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1);
-			}
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-
-			uniform vec3 u_Color;
-
-			void main() {
-				color = vec4(u_Color, 1);
-			}
-		)";
-
-		m_FlatColorShader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
-
-		vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main() {
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1);
-			}
-		)";
-
-		fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			uniform sampler2D u_Texture;
-
-			in vec2 v_TexCoord;
-
-			void main() {
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader.reset(Spydr::Shader::Create(vertexSrc, fragmentSrc));
+		m_FlatColorShader.reset(Spydr::Shader::Create("assets/shaders/FlatColor.glsl"));
+		m_TextureShader.reset(Spydr::Shader::Create("assets/shaders/Texture.glsl"));
 
 		m_Texture = Spydr::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Spydr::Texture2D::Create("assets/textures/SpydrLogo.png");

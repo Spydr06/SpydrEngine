@@ -106,7 +106,8 @@ project "Sandbox"
 		"Spydr/vendor/spdlog/include",
 		"Spydr/src",
 		"Spydr/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}" --,
+		-- "%{IncludeDir.Glad}"
 	}
 
 	links {
