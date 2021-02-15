@@ -36,14 +36,14 @@ public:
 		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_FlatColorShader.reset(Spydr::Shader::Create("assets/shaders/FlatColor.glsl"));
-		m_TextureShader.reset(Spydr::Shader::Create("assets/shaders/Texture.glsl"));
+		m_ShaderLibrary.Load("assets/shaders/FlatColor.glsl");
+		m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Spydr::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Spydr::Texture2D::Create("assets/textures/SpydrLogo.png");
 
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		m_ShaderLibrary.Get("Texture")->Bind();
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_ShaderLibrary.Get("Texture"))->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Spydr::Timestep ts) override
@@ -57,27 +57,24 @@ public:
 
 		Spydr::Renderer::BeginScene(*m_Camera);
 
-		//Future material system:
-		//Spydr::MaterialRef material = new Spydr::Material(m_FlatColorShader);
-		//Spydr::MaterialInstanceRef mi = new Spydr::MaterialInstance(material);
-		//material->Set("u_Color", redColor);
+		auto flatColorShader = m_ShaderLibrary.Get("FlatColor");
+		auto textureShader = m_ShaderLibrary.Get("Texture");
 
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		flatColorShader->Bind();
+		std::dynamic_pointer_cast<Spydr::OpenGLShader>(flatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				glm::vec3 pos(i * 0.22f, j * 0.22f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Spydr::Renderer::SubmitVertexData(m_VertexArray, m_FlatColorShader, transform);
+				Spydr::Renderer::SubmitVertexData(m_VertexArray, flatColorShader, transform);
 			}
 		}
 
 		m_Texture->Bind();
-		Spydr::Renderer::SubmitVertexData(m_VertexArray, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
-
+		Spydr::Renderer::SubmitVertexData(m_VertexArray, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
 		m_LogoTexture->Bind();
-		Spydr::Renderer::SubmitVertexData(m_VertexArray, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
+		Spydr::Renderer::SubmitVertexData(m_VertexArray, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
 
 		Spydr::Renderer::EndScene();
 	}
@@ -134,7 +131,7 @@ public:
 		ImGui::End();
 	}
 private:
-	Spydr::Ref<Spydr::Shader> m_FlatColorShader, m_TextureShader;
+	Spydr::ShaderLibrary m_ShaderLibrary;
 	Spydr::Ref<Spydr::VertexArray> m_VertexArray;
 	Spydr::Ref<Spydr::Texture2D> m_Texture, m_LogoTexture;
 
