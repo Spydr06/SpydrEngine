@@ -15,6 +15,8 @@ namespace Spydr
 
 		void SetRotation(float rotation) { m_Rotation = rotation;  RecalculateViewMatrix(); }
 		float GetRotation() const { return m_Rotation; }
+
+		void setProjection(float left, float right, float bottom, float top, float near_ = -1.0f, float far_ = 1.0f);
 		 
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }

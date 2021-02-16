@@ -8,7 +8,8 @@
 class ExampleLayer : public Spydr::Layer
 {
 public:
-	ExampleLayer() : Layer("Example"), m_SquarePosition({ 0.0f, 0.0f, 0.0f })
+	ExampleLayer()
+		: Layer("Example"), m_CameraController(16.0f / 9.0f)
 	{
 		float vertices[5 * 4] {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -19,7 +20,6 @@ public:
 
 		unsigned int indices[6]{ 0, 1, 2, 2, 3, 0 };
 
-		m_Camera = new Spydr::OrthographicCamera(-1.6f, 1.6f, -0.9f, 0.9f);
 		m_VertexArray.reset(Spydr::VertexArray::Create());
 
 		Spydr::Ref<Spydr::VertexBuffer> vertexBuffer;
@@ -33,7 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		Spydr::Ref<Spydr::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, ARRAY_SIZE(indices)));
+		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, (uint32_t) ARRAY_SIZE(indices)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_ShaderLibrary.Load("assets/shaders/FlatColor.glsl");
@@ -44,18 +44,21 @@ public:
 
 		m_ShaderLibrary.Get("Texture")->Bind();
 		std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_ShaderLibrary.Get("Texture"))->UploadUniformInt("u_Texture", 0);
-	}
+	} 
 
 	void OnUpdate(Spydr::Timestep ts) override
 	{
-		Move(ts);
+		//Update
+		m_CameraController.OnUpdate(ts);
+		m_Time = ts;
 
+		//Render
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
 
 		Spydr::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 		Spydr::RenderCommand::Clear();
 
-		Spydr::Renderer::BeginScene(*m_Camera);
+		Spydr::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		auto flatColorShader = m_ShaderLibrary.Get("FlatColor");
 		auto textureShader = m_ShaderLibrary.Get("Texture");
@@ -79,36 +82,9 @@ public:
 		Spydr::Renderer::EndScene();
 	}
 
-	void Move(Spydr::Timestep ts)
+	void OnEvent(Spydr::Event& e) override
 	{
-		m_Time = ts;
-		glm::vec3 cameraPosition = m_Camera->GetPosition();
-		if (Spydr::Input::IsKeyPressed(SP_KEY_W)) {
-			cameraPosition.y += m_CameraSpeed * m_Time;
-		}
-		if (Spydr::Input::IsKeyPressed(SP_KEY_A)) {
-			cameraPosition.x -= m_CameraSpeed * m_Time;
-		}
-		if (Spydr::Input::IsKeyPressed(SP_KEY_S)) {
-			cameraPosition.y -= m_CameraSpeed * m_Time;
-		}
-		if (Spydr::Input::IsKeyPressed(SP_KEY_D)) {
-			cameraPosition.x += m_CameraSpeed * m_Time;
-		}
-		m_Camera->SetPosition(cameraPosition);
-
-		float cameraRotation = m_Camera->GetRotation();
-		if (Spydr::Input::IsKeyPressed(SP_KEY_Y)) {
-			cameraRotation += m_RotationSpeed * m_Time;
-		}
-		if (Spydr::Input::IsKeyPressed(SP_KEY_X)) {
-			cameraRotation -= m_RotationSpeed * m_Time;
-		}
-		m_Camera->SetRotation(cameraRotation);
-	}
-
-	void OnEvent(Spydr::Event& event) override
-	{
+		m_CameraController.OnEvent(e);
 	}
 
 	void OnImGuiRender()
@@ -135,14 +111,11 @@ private:
 	Spydr::Ref<Spydr::VertexArray> m_VertexArray;
 	Spydr::Ref<Spydr::Texture2D> m_Texture, m_LogoTexture;
 
-	Spydr::OrthographicCamera* m_Camera;
-	float m_CameraSpeed = 2.5f;
-	float m_RotationSpeed = 50.0f;
-	float m_Time = 0.0f;
+	Spydr::OrthographicCameraController m_CameraController;
 
+	float m_Time = 0.0f;
 	bool m_ShowImGuiDemoWindow = true;
 
-	glm::vec3 m_SquarePosition;
 	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
 };
 
