@@ -63,6 +63,8 @@ namespace Spydr
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowResizeEvent event(width, height);
 
+			SP_CORE_WARN("Window size changed: [{0}, {1}] -> [{2}, {3}]", data.Width, data.Height, width, height);
+
 			data.Width = width;
 			data.Height = height;
 			data.EventCallback(event);

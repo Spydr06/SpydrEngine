@@ -7,8 +7,6 @@
 
 namespace Spydr
 {
-#define uint unsigned int
-#define vvoid virtual void
 	class WindowsWindow : public Window
 	{
 	public:
@@ -17,18 +15,18 @@ namespace Spydr
 
 		void OnUpdate() override;
 
-		inline uint GetWidth() const override { return m_Data.Width; }
-		inline uint GetHeight() const override { return m_Data.Height; }
+		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
 		//Window attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		inline vvoid* GetNativeWindow() const { return m_Window; };
+		inline virtual void* GetNativeWindow() const { return m_Window; };
 	private:
-		vvoid Init(const WindowProps& props);
-		vvoid Shutdown();
+		virtual void Init(const WindowProps& props);
+		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
 		GraphicsContext* m_Context;
@@ -36,8 +34,8 @@ namespace Spydr
 		struct WindowData
 		{
 			std::string Title;
-			uint Width;
-			uint Height;
+			unsigned int Width;
+			unsigned int Height;
 			bool VSync;
 
 			EventCallbackFn EventCallback;
@@ -45,6 +43,4 @@ namespace Spydr
 
 		WindowData m_Data;
 	};
-#undef uint
-#undef vvoid
 }
