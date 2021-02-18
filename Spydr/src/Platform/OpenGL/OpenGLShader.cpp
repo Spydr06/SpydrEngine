@@ -187,6 +187,11 @@ namespace Spydr
 		UploadUniformFloat3(name, value);
 	}
 
+	void OpenGLShader::SetFloat(const std::string& name, const float& value)
+	{
+		UploadUniformFloat(name, value);
+	}
+
 	void OpenGLShader::SetInt(const std::string& name, const int& value)
 	{
 		UploadUniformInt(name, value);
