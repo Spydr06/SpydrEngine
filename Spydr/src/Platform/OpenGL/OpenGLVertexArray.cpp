@@ -52,7 +52,7 @@ namespace Spydr {
 		glBindVertexArray(m_RendererID);
 		buffer->Bind();
 
-		SP_CORE_ASSERT(VertexBuffer->GetLayout().GetElements().size(), "VertexBuffer has no Layout!");
+		SP_CORE_ASSERT(buffer->GetLayout().GetElements().size(), "VertexBuffer has no Layout!");
 
 		uint32_t index = 0;
 		auto layout = buffer->GetLayout();

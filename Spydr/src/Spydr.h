@@ -26,7 +26,3 @@
 #include "Spydr/Renderer/RenderAPI.h"
 #include "Spydr/Renderer/Cameras/OrthographicCamera.h"
 #include "Spydr/Input/OrthographicCameraController.h"
-
-// ==== Entry Point ====
-#include "Spydr/Core/EntryPoint.h"
-// =====================

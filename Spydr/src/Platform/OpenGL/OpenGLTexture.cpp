@@ -12,7 +12,7 @@ namespace Spydr {
 		int width, heigth, channels;
 		stbi_set_flip_vertically_on_load(1);
 		stbi_uc* data = stbi_load(path.c_str(), &width, &heigth, &channels, 0);
-		SP_CORE_ASSERT(data, "Failed to load image \"" path.c_str() "\"");
+		SP_CORE_ASSERT(data, "Failed to load image \"{0}\"", path);
 
 		m_Width = width;
 		m_Height = heigth;

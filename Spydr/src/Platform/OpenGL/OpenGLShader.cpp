@@ -16,7 +16,7 @@ namespace Spydr
 		else if (type == "fragment" || type == "pixel") {
 			return GL_FRAGMENT_SHADER;
 		}
-		SP_CORE_ASSERT(false, "Unknown shader type \"" type.c_str() "\"!");
+		SP_CORE_ASSERT(false, "Unknown shader type: \"{0}\"", type);
 		return 0;
 	}
 
@@ -83,7 +83,7 @@ namespace Spydr
 
 			size_t begin = pos + typeTokenLength + 1;
 			std::string type = source.substr(begin, eol - begin);
-			SP_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified: \"" type.c_str "\"");
+			SP_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified: \"{0}\"", type);
 
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
 			pos = source.find(typeToken, nextLinePos);

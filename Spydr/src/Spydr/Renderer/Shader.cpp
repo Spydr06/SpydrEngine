@@ -34,7 +34,7 @@ namespace Spydr
 
 	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
 	{
-		SP_CORE_ASSERT(!Exists(name), "Shader with the name \"" name.c_str() "\" already exists");
+		SP_CORE_ASSERT(!Exists(name), "Shader already exists");
 		m_Shaders[name] = shader;
 	}
 
@@ -59,7 +59,7 @@ namespace Spydr
 
 	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
-		SP_CORE_ASSERT(Exists(name), "Shader with the name \"" name.c_str() "\" does not exist");
+		SP_CORE_ASSERT(Exists(name), "Shader does not exist");
 		return m_Shaders[name];
 	}
 

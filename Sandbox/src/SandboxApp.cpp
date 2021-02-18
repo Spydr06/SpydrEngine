@@ -1,39 +1,41 @@
 #include <Spydr.h>
+#include <Spydr/Core/EntryPoint.h>
 #include <imgui/imgui.h>
 
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/type_ptr.hpp"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "Platform/OpenGL/OpenGLShader.h"
 
-class ExampleLayer : public Spydr::Layer
+#include "Sandbox2D.h"
+
+/*class ExampleLayer : public Spydr::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(16.0f / 9.0f)
 	{
 		float vertices[5 * 4] {
-			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
-			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		unsigned int indices[6]{ 0, 1, 2, 2, 3, 0 };
 
-		m_VertexArray.reset(Spydr::VertexArray::Create());
+		m_VertexArray = Spydr::VertexArray::Create();
 
-		Spydr::Ref<Spydr::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Spydr::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Spydr::Ref<Spydr::VertexBuffer> squareVB;
+		squareVB = Spydr::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		Spydr::BufferLayout layout = {
-			{ Spydr::ShaderDataType::Float3, "a_Position" },
-			{ Spydr::ShaderDataType::Float2, "a_TexCoord" },
+			{ Spydr::ShaderDataType::Float3, "a_Position" }
 		};
-		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
+		squareVB->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(squareVB);
 
 		Spydr::Ref<Spydr::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Spydr::IndexBuffer::Create(indices, (uint32_t) ARRAY_SIZE(indices)));
+		indexBuffer = Spydr::IndexBuffer::Create(indices, (uint32_t) ARRAY_SIZE(indices));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_ShaderLibrary.Load("assets/shaders/FlatColor.glsl");
@@ -117,14 +119,15 @@ private:
 	bool m_ShowImGuiDemoWindow = true;
 
 	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
-};
+};*/
 
 class Sandbox : public Spydr::Application
 {
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
