@@ -21,5 +21,7 @@ private:
 	Spydr::Ref<Spydr::VertexArray> m_SquareVA;
 	Spydr::Ref<Spydr::Shader> m_FlatColorShader;
 
+	Spydr::Ref<Spydr::Texture2D> m_Texture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };

@@ -173,6 +173,7 @@
     <ClInclude Include="src\Spydr\Renderer\RenderAPI.h" />
     <ClInclude Include="src\Spydr\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Spydr\Renderer\Renderer.h" />
+    <ClInclude Include="src\Spydr\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Spydr\Renderer\Shader.h" />
     <ClInclude Include="src\Spydr\Renderer\Texture.h" />
     <ClInclude Include="src\Spydr\Renderer\VertexArray.h" />
@@ -614,6 +615,7 @@
     <ClCompile Include="src\Spydr\Renderer\RenderAPI.cpp" />
     <ClCompile Include="src\Spydr\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Spydr\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Shader.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Texture.cpp" />
     <ClCompile Include="src\Spydr\Renderer\VertexArray.cpp" />
@@ -636,4 +638,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
+</Project> 

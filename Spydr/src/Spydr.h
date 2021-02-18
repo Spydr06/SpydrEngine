@@ -23,6 +23,7 @@
 #include "Spydr/Renderer/VertexArray.h"
 #include "Spydr/Renderer/RenderAPI.h"
 #include "Spydr/Renderer/Renderer.h"
+#include "Spydr/Renderer/Renderer2D.h"
 #include "Spydr/Renderer/RenderAPI.h"
 #include "Spydr/Renderer/Cameras/OrthographicCamera.h"
 #include "Spydr/Input/OrthographicCameraController.h"

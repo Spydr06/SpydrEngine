@@ -13,6 +13,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "Spydr/Core/Log.h"
 
 #ifdef SP_PLATFORM_WINDOWS

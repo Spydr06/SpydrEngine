@@ -13,33 +13,11 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
-	m_SquareVA = Spydr::VertexArray::Create();
-
-	float vertices[5 * 4]{
-			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
-			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
-	};
-	Spydr::Ref<Spydr::VertexBuffer> squareVB = Spydr::VertexBuffer::Create(vertices, sizeof(vertices));
-
-	Spydr::BufferLayout layout = {
-		{ Spydr::ShaderDataType::Float3, "a_Position" },
-		{ Spydr::ShaderDataType::Float2, "a_TexCoord" },
-	};
-	squareVB->SetLayout(layout);
-	m_SquareVA->AddVertexBuffer(squareVB);
-
-	unsigned int indices[6]{ 0, 1, 2, 2, 3, 0 };
-	Spydr::Ref<Spydr::IndexBuffer> squareIB = Spydr::IndexBuffer::Create(indices, (uint32_t)ARRAY_SIZE(indices));
-	m_SquareVA->SetIndexBuffer(squareIB);
-
-	m_FlatColorShader = Spydr::Shader::Create("assets/shaders/FlatColor.glsl");
+	m_Texture = Spydr::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
-
 }
 
 void Sandbox2D::OnUpdate(Spydr::Timestep ts)
@@ -51,22 +29,12 @@ void Sandbox2D::OnUpdate(Spydr::Timestep ts)
 	Spydr::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 	Spydr::RenderCommand::Clear();
 
-	Spydr::Renderer::BeginScene(m_CameraController.GetCamera());
+	Spydr::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<Spydr::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
+	Spydr::Renderer2D::DrawQuad({ 0.0f, 0.0f }, 0.0f, { 10.0f, 10.0f }, m_Texture);
+	Spydr::Renderer2D::DrawQuad({ 0.5f, -0.5f, 0.1f }, 0.0f, { 1.5f, 0.5f }, {0.8f, 0.2f, 0.3f, 0.8f});
 
-	glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-
-	for (int y = 0; y < 20; y++) {
-		for (int x = 0; x < 20; x++) {
-			glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
-			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-			Spydr::Renderer::SubmitVertexData(m_SquareVA, m_FlatColorShader, transform);
-		}
-	}
-
-	Spydr::Renderer::EndScene();
+	Spydr::Renderer2D::EndScene();
 }
 
 void Sandbox2D::OnImGuiRender()

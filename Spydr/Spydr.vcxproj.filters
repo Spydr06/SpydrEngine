@@ -162,6 +162,9 @@
     <ClInclude Include="src\Spydr\Renderer\Renderer.h">
       <Filter>src\Spydr\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spydr\Renderer\Renderer2D.h">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\Shader.h">
       <Filter>src\Spydr\Renderer</Filter>
     </ClInclude>
@@ -1479,6 +1482,9 @@
       <Filter>src\Spydr\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Renderer\Renderer2D.cpp">
       <Filter>src\Spydr\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Shader.cpp">
