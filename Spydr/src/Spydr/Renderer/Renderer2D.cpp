@@ -117,7 +117,7 @@ namespace Spydr
 		s_Data->WhiteTexture->Bind();
 
 		glm::mat4 transfrom = glm::translate(glm::mat4(1.0f), position) * 
-			glm::rotate(glm::mat4(1.0f), (float) (rotation * M_PI) / 180.0f, glm::vec3(0.0f, 0.0f, -1.0f)) *
+			glm::rotate(glm::mat4(1.0f), (float) rotation, glm::vec3(0.0f, 0.0f, 1.0f)) *
 			glm::scale(glm::mat4(1.0f), {size.x, size.y, 1.0f});
 		s_Data->TextureShader->SetMat4("u_Transform", transfrom);
 
@@ -125,19 +125,19 @@ namespace Spydr
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const float rotation, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, glm::vec4 tintColor = glm::vec4(1.0f))
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const float rotation, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, glm::vec4 tintColor)
 	{
 		DrawRotatedQuad(glm::vec3(position, 0.0f), rotation, size, texture, tilingFactor, tintColor);
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, glm::vec4 tintColor = glm::vec4(1.0f))
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, glm::vec4 tintColor)
 	{
 		s_Data->TextureShader->SetFloat4("u_Color", tintColor);
 		s_Data->TextureShader->SetFloat("u_TilingFactor", tilingFactor);
 		texture->Bind();
 
 		glm::mat4 transfrom = glm::translate(glm::mat4(1.0f), position) *
-			glm::rotate(glm::mat4(1.0f), (float)(rotation * M_PI) / 180.0f, glm::vec3(0.0f, 0.0f, -1.0f)) *
+			glm::rotate(glm::mat4(1.0f), rotation, glm::vec3(0.0f, 0.0f, 1.0f)) *
 			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		s_Data->TextureShader->SetMat4("u_Transform", transfrom);
 		
