@@ -2,7 +2,7 @@
 
 #include "sppch.h"
 
-#include "Spydr/Core.h"
+#include "Spydr/Core/Core.h"
 #include "Spydr/Events/Event.h"
 
 namespace Spydr

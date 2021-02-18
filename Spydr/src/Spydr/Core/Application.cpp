@@ -2,7 +2,7 @@
 #include "Application.h"
 
 #include "Spydr/Events/ApplicationEvent.h"
-#include "Spydr/Log.h"
+#include "Spydr/Core/Log.h"
 #include "GLFW/glfw3.h"
 
 #include "Spydr/Input/Input.h"

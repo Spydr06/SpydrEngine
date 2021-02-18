@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Spydr/Core.h"
+#include "Spydr/Core/Core.h"
 
 namespace Spydr {
 	class Texture 

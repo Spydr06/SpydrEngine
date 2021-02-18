@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spydr/Window.h"
+#include "Spydr/Core/Window.h"
 #include "Spydr/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"

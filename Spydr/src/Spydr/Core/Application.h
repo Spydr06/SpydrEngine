@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Window.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "Spydr/Events/Event.h"
+#include "Spydr/Events/ApplicationEvent.h"
 #include "Spydr/Layers/LayerStack.h"
 
 #include "Spydr/Core/Timestep.h"

@@ -2,9 +2,9 @@
 
 // For use by Spydr Applications.
 
-#include "Spydr/Application.h"
+#include "Spydr/Core/Application.h"
 #include "Spydr/Layers/Layer.h"
-#include "Spydr/Log.h"
+#include "Spydr/Core/Log.h"
 #include "Spydr/ImGui/ImGuiLayer.h"
 
 #include "Spydr/Core/Timestep.h"
@@ -25,8 +25,8 @@
 #include "Spydr/Renderer/Renderer.h"
 #include "Spydr/Renderer/RenderAPI.h"
 #include "Spydr/Renderer/Cameras/OrthographicCamera.h"
-#include "Spydr/OrthographicCameraController.h"
+#include "Spydr/Input/OrthographicCameraController.h"
 
 // ==== Entry Point ====
-#include "Spydr/EntryPoint.h"
+#include "Spydr/Core/EntryPoint.h"
 // =====================

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spydr/Core.h"
+#include "Spydr/Core/Core.h"
 
 namespace Spydr
 {

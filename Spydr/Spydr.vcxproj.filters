@@ -90,17 +90,23 @@
     <ClInclude Include="src\Spydr.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\Application.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Application.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\Core.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Core.h">
+      <Filter>src\Spydr\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Core\EntryPoint.h">
+      <Filter>src\Spydr\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Core\Log.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Core\Timestep.h">
       <Filter>src\Spydr\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\EntryPoint.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Window.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Events\ApplicationEvent.h">
       <Filter>src\Spydr\Events</Filter>
@@ -129,14 +135,14 @@
     <ClInclude Include="src\Spydr\Input\MouseButtonCodes.h">
       <Filter>src\Spydr\Input</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spydr\Input\OrthographicCameraController.h">
+      <Filter>src\Spydr\Input</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spydr\Layers\Layer.h">
       <Filter>src\Spydr\Layers</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Layers\LayerStack.h">
       <Filter>src\Spydr\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\Log.h">
-      <Filter>src\Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\Buffer.h">
       <Filter>src\Spydr\Renderer</Filter>
@@ -164,9 +170,6 @@
     </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\VertexArray.h">
       <Filter>src\Spydr\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\Window.h">
-      <Filter>src\Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h">
       <Filter>src</Filter>
@@ -1413,7 +1416,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1440,8 +1442,11 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spydr\Application.cpp">
-      <Filter>src\Spydr</Filter>
+    <ClCompile Include="src\Spydr\Core\Application.cpp">
+      <Filter>src\Spydr\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Core\Log.cpp">
+      <Filter>src\Spydr\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\ImGui\ImGuiBuild.cpp">
       <Filter>src\Spydr\ImGui</Filter>
@@ -1452,14 +1457,14 @@
     <ClCompile Include="src\Spydr\ImGui\ImGuiThemes.cpp">
       <Filter>src\Spydr\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spydr\Input\OrthographicCameraController.cpp">
+      <Filter>src\Spydr\Input</Filter>
+    </ClCompile>
     <ClCompile Include="src\Spydr\Layers\Layer.cpp">
       <Filter>src\Spydr\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Layers\LayerStack.cpp">
       <Filter>src\Spydr\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Spydr\Log.cpp">
-      <Filter>src\Spydr</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Buffer.cpp">
       <Filter>src\Spydr\Renderer</Filter>
@@ -1491,6 +1496,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spydr\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

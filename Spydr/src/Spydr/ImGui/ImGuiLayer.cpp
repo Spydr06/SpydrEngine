@@ -5,7 +5,7 @@
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
-#include "Spydr/Application.h"
+#include "Spydr/Core/Application.h"
 #include "ImGuiThemes.h"
 
 // TEMPORARY
