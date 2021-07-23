@@ -67,6 +67,11 @@ project "Spydr"
 			"_CRT_SECURE_NO_WARNINGS"
 		}
 
+	filter "system:linux"
+		defines {
+			"SP_PLATFORM_LINUX"
+		}
+
 	filter "configurations:Debug"
 		defines "SP_DEBUG"
 		runtime "Debug"
@@ -107,7 +112,9 @@ project "Sandbox"
 
 	links {
 		"Spydr",
-		"ImGui"
+		"ImGui",
+		"Glad",
+		"GLFW"
 	}
 
 	filter "system:windows"
@@ -116,6 +123,12 @@ project "Sandbox"
 		defines {
 			"SP_PLATFORM_WINDOWS"
 		}
+	
+	filter "system:linux"
+		defines {
+			"SP_PLATFORM_LINUX"
+		}
+		linkoptions "-Wl,--no-as-needed -ldl -lpthread"
 
 	filter "configurations:Debug"
 		defines "SP_DEBUG"

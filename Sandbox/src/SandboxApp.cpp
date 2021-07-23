@@ -19,7 +19,7 @@ public:
 		};
 
 		unsigned int indices[9]{ 0, 1, 2, 2, 3, 0, 4, 5, 6 };
-
+		
 		m_Camera = new Spydr::OrthographicCamera(-1.6f, 1.6f, -0.9f, 0.9f);
 		m_VertexArray.reset(Spydr::VertexArray::Create());
 

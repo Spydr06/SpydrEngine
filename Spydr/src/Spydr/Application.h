@@ -11,7 +11,7 @@
 
 namespace Spydr
 {
-	class SPYDR_API Application
+	class Application
 	{
 	public:
 		Application();

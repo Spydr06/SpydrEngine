@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef SP_PLATFORM_WINDOWS 
+#if defined(SP_PLATFORM_WINDOWS) || defined (SP_PLATFORM_LINUX) 
 
 extern Spydr::Application* Spydr::CreateApplication();
 

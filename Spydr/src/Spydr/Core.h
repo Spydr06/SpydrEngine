@@ -1,12 +1,14 @@
 #pragma once
 
-#ifdef SP_PLATFORM_WINDOWS
+#if defined(SP_PLATFORM_WINDOWS)
 	#ifdef SP_BUILD_DLL
 		#define SPYDR_API __declspec(dllexport)
 	//#else 
 		//#define SPYDR_API __declspec(dllimport)
 	#endif
 	#define SPYDR_API
+#elif defined(SP_PLATFORM_LINUX)
+
 #else
 	#error SpydrEngine only supports Windows.
 #endif
@@ -18,6 +20,8 @@
 	#define SP_ASSERT(x, ...)
 	#define SP_CORE_ASSERT(x, ...)
 #endif
+
+#define SPYDR_API
 
 #define BIT(x) (1 << x)
 #define SP_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

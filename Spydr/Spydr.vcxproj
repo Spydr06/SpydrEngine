@@ -140,6 +140,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Linux\LinuxInput.h" />
+    <ClInclude Include="src\Platform\Linux\LinuxWindow.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h" />
@@ -589,6 +591,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Linux\LinuxInput.cpp" />
+    <ClCompile Include="src\Platform\Linux\LinuxWindow.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderAPI.cpp" />
@@ -603,9 +607,6 @@
     <ClCompile Include="src\Spydr\Layers\Layer.cpp" />
     <ClCompile Include="src\Spydr\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Spydr\Log.cpp" />
-    <ClCompile Include="src\sppch.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Cameras\OrthographicCamera.cpp" />
     <ClCompile Include="src\Spydr\Renderer\RenderAPI.cpp" />
@@ -613,6 +614,9 @@
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Spydr\Renderer\Shader.cpp" />
     <ClCompile Include="src\Spydr\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\sppch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

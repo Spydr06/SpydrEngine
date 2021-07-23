@@ -1,7 +1,7 @@
 #include "sppch.h"
 #include "OpenGLShader.h"
-#include "glad/glad.h"
 
+#include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Spydr

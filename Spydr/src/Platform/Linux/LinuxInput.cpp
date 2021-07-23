@@ -1,5 +1,5 @@
 #include "sppch.h"
-#include "WindowsInput.h"
+#include "LinuxInput.h"
 
 #include "Spydr/Application.h"
 #include <GLFW/glfw3.h>

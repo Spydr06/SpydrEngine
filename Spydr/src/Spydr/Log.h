@@ -7,7 +7,7 @@
 namespace Spydr
 {
 #define log_ptr static std::shared_ptr<spdlog::logger>
-	class SPYDR_API Log
+	class Log
 	{
 	public:
 		static void Init();
