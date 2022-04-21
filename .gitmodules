@@ -10,3 +10,6 @@
 [submodule "Spydr/vendor/glm"]
 	path = Spydr/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule ".\\Spydr\\vendor\\spdlog"]
+	path = .\\Spydr\\vendor\\spdlog
+	url = https://github.com/gabime/spdlog.git
