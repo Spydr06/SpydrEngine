@@ -15,7 +15,7 @@ namespace Spydr
 		vvoid Bind() cov;
 		vvoid Unbind() cov;
 
-		vvoid SetLayout(const BufferLayout& layout) const override { m_Layout = layout; };
+		vvoid SetLayout(const BufferLayout& layout) override { m_Layout = layout; };
 		virtual const BufferLayout& GetLayout() cov { return m_Layout; };
 	private:
 		uint32_t m_RendererID;

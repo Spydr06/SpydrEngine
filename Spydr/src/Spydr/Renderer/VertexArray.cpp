@@ -6,14 +6,14 @@
 
 namespace Spydr
 {
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI()) {
 		case RenderAPI::API::None:
 			SP_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
-			return nullptr;
+			return false;
 		case RenderAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 
 		SP_CORE_ASSERT(false, "Unknown RendererAPI!");

@@ -7,9 +7,6 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform\Linux">
-      <UniqueIdentifier>{0052F1F1-EC35-B247-5596-AC9A41999CC9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
@@ -61,14 +58,11 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\Linux\LinuxInput.h">
-      <Filter>src\Platform\Linux</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Linux\LinuxWindow.h">
-      <Filter>src\Platform\Linux</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -79,6 +73,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -93,17 +90,23 @@
     <ClInclude Include="src\Spydr.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\Application.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Application.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\Core.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Core.h">
+      <Filter>src\Spydr\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Core\EntryPoint.h">
+      <Filter>src\Spydr\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Core\Log.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Core\Timestep.h">
       <Filter>src\Spydr\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Spydr\EntryPoint.h">
-      <Filter>src\Spydr</Filter>
+    <ClInclude Include="src\Spydr\Core\Window.h">
+      <Filter>src\Spydr\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Events\ApplicationEvent.h">
       <Filter>src\Spydr\Events</Filter>
@@ -132,14 +135,14 @@
     <ClInclude Include="src\Spydr\Input\MouseButtonCodes.h">
       <Filter>src\Spydr\Input</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spydr\Input\OrthographicCameraController.h">
+      <Filter>src\Spydr\Input</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spydr\Layers\Layer.h">
       <Filter>src\Spydr\Layers</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Layers\LayerStack.h">
       <Filter>src\Spydr\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\Log.h">
-      <Filter>src\Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\Buffer.h">
       <Filter>src\Spydr\Renderer</Filter>
@@ -159,14 +162,17 @@
     <ClInclude Include="src\Spydr\Renderer\Renderer.h">
       <Filter>src\Spydr\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spydr\Renderer\Renderer2D.h">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\Shader.h">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spydr\Renderer\Texture.h">
       <Filter>src\Spydr\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Spydr\Renderer\VertexArray.h">
       <Filter>src\Spydr\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spydr\Window.h">
-      <Filter>src\Spydr</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h">
       <Filter>src</Filter>
@@ -1410,14 +1416,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\Linux\LinuxInput.cpp">
-      <Filter>src\Platform\Linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\Linux\LinuxWindow.cpp">
-      <Filter>src\Platform\Linux</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1430,6 +1433,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1439,8 +1445,11 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Spydr\Application.cpp">
-      <Filter>src\Spydr</Filter>
+    <ClCompile Include="src\Spydr\Core\Application.cpp">
+      <Filter>src\Spydr\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Core\Log.cpp">
+      <Filter>src\Spydr\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\ImGui\ImGuiBuild.cpp">
       <Filter>src\Spydr\ImGui</Filter>
@@ -1451,14 +1460,14 @@
     <ClCompile Include="src\Spydr\ImGui\ImGuiThemes.cpp">
       <Filter>src\Spydr\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spydr\Input\OrthographicCameraController.cpp">
+      <Filter>src\Spydr\Input</Filter>
+    </ClCompile>
     <ClCompile Include="src\Spydr\Layers\Layer.cpp">
       <Filter>src\Spydr\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Layers\LayerStack.cpp">
       <Filter>src\Spydr\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Spydr\Log.cpp">
-      <Filter>src\Spydr</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Buffer.cpp">
       <Filter>src\Spydr\Renderer</Filter>
@@ -1475,7 +1484,13 @@
     <ClCompile Include="src\Spydr\Renderer\Renderer.cpp">
       <Filter>src\Spydr\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Spydr\Renderer\Renderer2D.cpp">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\Shader.cpp">
+      <Filter>src\Spydr\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spydr\Renderer\Texture.cpp">
       <Filter>src\Spydr\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Spydr\Renderer\VertexArray.cpp">
@@ -1483,6 +1498,9 @@
     </ClCompile>
     <ClCompile Include="src\sppch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Spydr/Core.h"
+#include "Spydr/Core/Core.h"
 
 namespace Spydr
 {
-	class Input
+	class SPYDR_API Input
 	{
 	public:
 		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }

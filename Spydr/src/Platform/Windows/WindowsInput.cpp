@@ -1,7 +1,7 @@
 #include "sppch.h"
 #include "WindowsInput.h"
 
-#include "Spydr/Application.h"
+#include "Spydr/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Spydr

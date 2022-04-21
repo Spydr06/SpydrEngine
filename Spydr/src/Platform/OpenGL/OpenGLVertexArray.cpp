@@ -47,12 +47,12 @@ namespace Spydr {
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& buffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& buffer)
 	{
 		glBindVertexArray(m_RendererID);
 		buffer->Bind();
 
-		SP_CORE_ASSERT(VertexBuffer->GetLayout().GetElements().size(), "VertexBuffer has no Layout!");
+		SP_CORE_ASSERT(buffer->GetLayout().GetElements().size(), "VertexBuffer has no Layout!");
 
 		uint32_t index = 0;
 		auto layout = buffer->GetLayout();
@@ -64,7 +64,7 @@ namespace Spydr {
 		m_VertexBuffers.push_back(buffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& buffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& buffer)
 	{
 		glBindVertexArray(m_RendererID);
 		buffer->Bind();
